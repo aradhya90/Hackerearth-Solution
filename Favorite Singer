@@ -1,0 +1,36 @@
+#include <iostream>
+using namespace std;
+
+int countFavoriteSingers(int arr[], int n) {
+    int count = 0;
+
+    for (int i = 0; i < n; i++) {
+        int currentSinger = arr[i];
+        int currentSingerCount = 0;
+
+        for (int j = 0; j < n; j++) {
+            if (arr[j] == currentSinger) {
+                currentSingerCount++;
+            }
+        }
+
+        // Check if the current singer has more songs than the previous favorite singer
+        if (currentSingerCount > count) {
+            count = currentSingerCount;
+        }
+    }
+
+    return count;
+}
+
+int main() {
+    const int playlistSize = 5; // Change this to the actual size of Bob's playlist
+    int playlist[playlistSize] = {1, 1,2,2,4}; // Replace with Bob's playlist
+
+    int result = countFavoriteSingers(playlist, playlistSize);
+
+    cout << "Number of favorite singers: " << result << endl;
+
+    return 0;
+}
+
